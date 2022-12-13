@@ -1,0 +1,60 @@
+<form [formGroup]="miFormularioValidado" (submit)="enviarFormulario()">
+  <h3>Datos en vivo:</h3>
+  <p>{{ miFormularioValidado.value | json }}</p>
+  <!--? Campos de formulario + Mensajes de error por validación -->
+  <!--! NOMBRE -->
+
+  <input formControlName="nombre" placeholder="Nombre" />
+
+  <div *ngIf="nombre?.errors?.['required'] && nombre?.touched">
+    <p class="error">* El campo Nombre es obligatorio</p>
+  </div>
+  <!--! APELLIDO -->
+  <input formControlName="apellido" placeholder="Apellidos" />
+  <!--! EDAD -->
+  <input formControlName="edad" placeholder="Edad" type="number" step="any" />
+  <div *ngIf="edad?.errors?.['required'] && edad?.touched">
+    <p class="error">* El campo Edad es obligatorio</p>
+  </div>
+  <div *ngIf="edad?.errors?.['min']">
+    <p class="error">
+      * El campo Edad no puede ser menor a 18. No puedes registrarte con
+      {{edad?.errors?.['min'].actual}} años
+    </p>
+  </div>
+  <div *ngIf="edad?.errors?.['max']">
+    <p class="error">
+      * El campo Edad no puede ser superior a 99. No puedes registrarte con
+      {{edad?.errors?.['max'].actual}} años
+    </p>
+  </div>
+  <!--! EMAIL -->
+  <input formControlName="email" placeholder="Email" />
+  <div *ngIf="email?.errors?.['required'] && email?.touched">
+    <p class="error">* El campo Email es obligatorio</p>
+  </div>
+  <div *ngIf="email?.errors?.['email']">
+    <p class="error">* El formato del email no es valido</p>
+  </div>
+  <!--! CONTRASEÑA -->
+  <input formControlName="password" placeholder="Contraseña" type="password" />
+  <div *ngIf="password?.errors?.['required'] && password?.touched">
+    <p class="error">*El campo Contraseña es obligatorio</p>
+  </div>
+  <div *ngIf="password?.errors?.['pattern']">
+    <p class="error">* El formato de la Contraseña no es valido</p>
+  </div>
+
+  <!--! ACEPTA  -->
+  <div class="acepta">
+    <input type="checkbox" formControlName="acepta" id="acepta" />
+    <label for="acepta">Acepta</label>
+  </div>
+  <div *ngIf="acepta?.errors?.['requiredTrue'] && acepta?.touched">
+    <p class="error">*Debes aceptar los términos</p>
+  </div>
+  <!--? Boton de submit que se activa solo cuando el formulario es valido -->
+  <button type="submit" [disabled]="miFormularioValidado.invalid">
+    Enviar
+  </button>
+</form>
