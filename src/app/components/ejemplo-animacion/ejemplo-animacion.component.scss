@@ -1,0 +1,16 @@
+.caja{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 200px;
+    width: 200px;
+    background-color: tomato;
+    color: white;
+    font-weight: bolder;
+    font-size: medium;
+}
+
+button{
+    margin: 5px;
+}

@@ -1,0 +1,6 @@
+<div class="caja" [@animaciones]="state">
+  <p>Ejemplo Animacion {{state}}</p>
+  <button (click)="cambiarEstado()">{{state=='active' ? 'Desactivar' : 'Activar' }}</button>
+  <button (click)="subir()">Subir</button>
+  <button (click)="rotar()">Rotar</button>
+</div>

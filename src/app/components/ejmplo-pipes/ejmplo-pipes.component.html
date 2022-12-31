@@ -1,0 +1,87 @@
+<h1>Ejemplos PIPES nativos de angular</h1>
+<!--* Fechas -->
+<h3>Pipes para fechas:</h3>
+<p>Mi cumpleaños sin PIPE es: {{ dob }}</p>
+<p>Mi cumpleaños con PIPE con DATE básico: {{ dob | date }}</p>
+<p>
+  Mi cumpleaños con PIPE con DATE "dd/MM/yyyy": {{ dob | date : "dd/MM/yyyy" }}
+</p>
+<p>
+  --------------------------------------------------------------------------------------------------
+</p>
+<p>Mi cumpleaños con PIPE DATE short/full: {{ dob | date : dateFormat }}</p>
+
+<button (click)="cambiarFormato()">
+  Cambiar formato a forma {{ !cambio ? "Corta" : "Completa" }}
+</button>
+<p>
+  --------------------------------------------------------------------------------------------------
+</p>
+<!--* MAYUS Y MINUS -->
+
+<h4>Bienvenido, {{ nombre | uppercase }}</h4>
+<p>Nombre de usuario @{{ nombre | lowercase }}</p>
+<p>
+  --------------------------------------------------------------------------------------------------
+</p>
+<!--* Pipes decimales  -->
+<p>Numero PI con 3 decimales: {{ NUMERO_PI | number : ".3-3" }}</p>
+<p>Numero PI con 5 decimales: {{ NUMERO_PI | number : ".5-5" }}</p>
+<p>Numero PI con 5 decimales: {{ NUMERO_PI | number : ".5-5" }}</p>
+<p>Numero PI con 2 enteros y 8 decimales: {{ NUMERO_PI | number : "2.8-8" }}</p>
+<p>
+  --------------------------------------------------------------------------------------------------
+</p>
+<!--* Pipes de monedas -->
+<p>Precio Carrito: {{ precioCarrito | currency : "USD" }}</p>
+<p>Precio Carrito: {{ precioCarrito | currency : "EUR" : true : ".0-0" }}</p>
+<p>Precio Carrito: {{ precioCarrito | currency : "ARS" : true : "2.2-2" }}</p>
+
+<p>
+  --------------------------------------------------------------------------------------------------
+</p>
+<!--*Pipes json  -->
+<p>{{ persona | json }}</p>
+<p>
+  --------------------------------------------------------------------------------------------------
+</p>
+<!--* Porcentaje -->
+<p>Porcentaje obtenido: {{ cantidad | percent : ".2-2" }}</p>
+
+<p>
+  --------------------------------------------------------------------------------------------------
+</p>
+<!--* Slices(texto largo)  -->
+<p>Texto demasiado largo: {{ textoLargo }}</p>
+<!--recorta del caracter 0 al 20 -->
+<p>Texto largo acordato con pipe Slice: {{ textoLargo | slice : 0 : 20 }}...</p> 
+
+<p>
+  --------------------------------------------------------------------------------------------------
+</p>
+
+<!--* Combinacion de pipes  -->
+<p>
+  Mi cumpleaños con PIPE DATE short/full en MAYUSCULAS:
+  {{ dob | date : dateFormat | uppercase }}
+</p>
+<p>
+  Mi cumpleaños con PIPE DATE short/full en MAYUSCULAS:
+  {{ dob | date : dateFormat | lowercase }}
+</p>
+<p>
+  --------------------------------------------------------------------------------------------------
+</p>
+<!--* Pipe personalizado (multiplica)-->
+<!-- No recibe valor -->
+<p>Resultado: {{ 2 | multiplica }} puntos</p>
+<!-- Recibe un numero -->
+<p>Resultado: {{ 2 | multiplica : 10 }} puntos</p>
+<!-- Recibe un numero por variable -->
+<p>Resultado: {{ 2 | multiplica : numero }} puntos</p>
+<p>
+  --------------------------------------------------------------------------------------------------
+</p>
+<!--* Pipe Personalizado(calcular puntuación) -->
+<p>{{ jugador1 | calcularPuntuacion }}</p>
+<p>{{ jugador2 | calcularPuntuacion }}</p>
